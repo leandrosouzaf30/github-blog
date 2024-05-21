@@ -9,6 +9,7 @@ export const defaultTheme = {
     'base-post': '#112131',
     'base-profile': '#0B1B2B',
     'base-background': '#071422',
-    'base-input': '#040F1A'
+    'base-input': '#040F1A',
+    'base-header': '#0C1C2D'
     
   } as const
