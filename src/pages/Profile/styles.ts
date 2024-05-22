@@ -28,6 +28,14 @@ export const ProfileContent = styled.div`
 export const ProfileHeader = styled.header`
     display: flex;
     justify-content: space-between;
+
+    a{
+        color: ${props=>props.theme['blue']};
+        text-decoration:none;
+        display: flex;
+        align-items: flex-end;
+        gap: 0.2rem;
+    }
 `;
 
 export const ProfileInfo = styled.div`

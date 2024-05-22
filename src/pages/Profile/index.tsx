@@ -1,8 +1,7 @@
 
 import { ProfileContainer, ProfileContent, ProfileHeader, ProfileInfo } from "./styles";
-import logo from '../../assets/logo.svg'
 import { Header } from "../../components/Header";
-import { GithubLogo, Users, Buildings } from "phosphor-react";
+import { GithubLogo, Users, Buildings, ArrowSquareOut } from "phosphor-react";
 import { api } from "../../lib/axios";
 import { useEffect, useState } from "react";
 
@@ -28,7 +27,10 @@ export function Profile(){
                 <ProfileContent>
                     <ProfileHeader>
                         <h1>{user.name}</h1>
-                        <a href={user.html_url}>GITHUB</a>
+                        <a href={user.html_url}>
+                            GITHUB
+                            <ArrowSquareOut size={22} />    
+                        </a>
                     </ProfileHeader>
                     <span>{user.bio}</span>
                     <ProfileInfo>
