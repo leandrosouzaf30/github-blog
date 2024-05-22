@@ -12,4 +12,8 @@ export const HeaderContent = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: center;
+
+    img{
+        margin-top: 1rem;
+    }
 `;
