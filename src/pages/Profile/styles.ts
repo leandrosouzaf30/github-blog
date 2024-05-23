@@ -3,31 +3,41 @@ import styled from "styled-components";
 export const ProfileContainer = styled.section`
     width: 100%;
     max-width: 1120px;
-    margin: -6rem  auto 0;
-    padding: 0 1.5rem;
+    margin: -8rem  auto 0;
+    padding: 2rem;
     display: flex;
-    background: ${props=>props.theme['base-profile']};
-
-    img{
-        width: 148px;
-        height: 148px;
-        margin: 2rem 1rem;
-        border-radius: 0.5rem;
-    }
+    flex-direction: column;
+    row-gap: 4rem;
 `;
 
 export const ProfileContent = styled.div`
     display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    flex-wrap: wrap;
-    row-gap: 1rem;
     width: 100%;
+    background: #0B1B2B;
+    flex: 1;
+    gap: 1rem;
+    padding: 2rem;
+    background: ${props=>props.theme['base-profile']};
+    border-radius: 0.5rem;
+
+
+    img{
+        width: 148px;
+        height: 148px;
+        border-radius: 0.5rem;
+    }
 `;
 
-export const ProfileHeader = styled.header`
+export const ProfileDescription = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 1.5rem;
+
+    head{
+        display: flex;
+        justify-content: space-between;
+    }
 
     a{
         color: ${props=>props.theme['blue']};
