@@ -1,18 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../../../lib/axios";
 import { CardContent, PublicacoesCard, PublicacoesContainer, PublicacoesList } from "./styles";
+import { ProfileContext } from "../../../../context/ProfileContext";
 
 export function Publicacoes(){
-    const [issues, setIssues] = useState([])
-
-    async function getIssues(){
-        const response = await api.get('https://api.github.com/repos/leandrosouzaf30/github-blog/issues')
-        setIssues(response.data)
-    }
-
-    useEffect(()=>{
-        getIssues()
-    },[])
+    const {issues} = useContext(ProfileContext)
 
     return(
        <PublicacoesContainer>

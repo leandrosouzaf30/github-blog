@@ -18,7 +18,10 @@ interface User {
 
 interface ProfileContextType {
     user: User;
+    issues: []
     getUser: () => Promise<void>;
+    getIssues: () => Promise<void>;
+
   }
 
 export const ProfileContext = createContext({} as ProfileContextType)
@@ -33,6 +36,7 @@ export function ProfileProvider({children}: ProfileProviderProps) {
         company: '', 
         followers: 0
     })
+    const [issues, setIssues] = useState([])
 
     async function getUser() {
         const userGit = 'leandrosouzaf30'
@@ -41,14 +45,23 @@ export function ProfileProvider({children}: ProfileProviderProps) {
         setUser(response.data)
     }
 
+
+    async function getIssues(){
+        const response = await api.get('https://api.github.com/repos/leandrosouzaf30/github-blog/issues')
+        setIssues(response.data)
+    }
+
     useEffect(()=>{
+        getIssues()
         getUser();
-    }, [])
+    },[])
 
     return(
         <ProfileContext.Provider value={{
             user,
-            getUser
+            issues,
+            getUser,
+            getIssues,
         }}>
             {children}
         </ProfileContext.Provider>

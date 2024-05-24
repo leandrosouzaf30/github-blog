@@ -38,7 +38,6 @@ export function BuscaPublicacoes(){
           })
       
           SetsearcheIssue(response.data)
-          console.log(searchIssue)
     }
 
     return(
