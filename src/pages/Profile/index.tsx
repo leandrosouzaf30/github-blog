@@ -2,42 +2,15 @@
 import { ProfileContainer, ProfileContent, ProfileDescription, ProfileInfo } from "./styles";
 import { Header } from "../../components/Header";
 import { GithubLogo, Users, Buildings, ArrowSquareOut } from "phosphor-react";
-import { api } from "../../lib/axios";
-import { useEffect, useState } from "react";
 import { Publicacoes } from "./components/Publicacoes";
 import { BuscaPublicacoes } from "./components/BuscaPublicacoes";
+import { useContext } from "react";
+import { ProfileContext } from "../../context/ProfileContext";
 
-interface User {
-    avatar_url: string,
-    name: string,
-    hml_url: string,
-    bio: string,
-    login: string,
-    company: string,
-    followers: number
-}
+
 
 export function Profile(){
-    const [user, setUser] = useState<User>({
-        avatar_url: '', 
-        name: '', 
-        hml_url: '',
-        bio: '', 
-        login: '', 
-        company: '', 
-        followers: 0
-    })
-    
-    async function getUser() {
-        const userGit = 'leandrosouzaf30'
-        const response = await api.get(`users/${userGit}`)
-        
-        setUser(response.data)
-    }
-
-    useEffect(()=>{
-        getUser();
-    }, [])
+    const {user} = useContext(ProfileContext)
     return(
         <div>
             <Header/>
