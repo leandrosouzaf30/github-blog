@@ -1,8 +1,9 @@
 import { ThemeProvider } from "styled-components"
 import { GlobalStyle } from "./styles/global"
 import { defaultTheme } from "./styles/themes/default"
-import { Profile } from "./pages/Profile"
 import { ProfileProvider } from "./context/ProfileContext"
+import { BrowserRouter } from "react-router-dom"
+import { Router } from "./Router"
 
 
 export function App() {
@@ -10,7 +11,9 @@ export function App() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <ProfileProvider>
-          <Profile />
+          <BrowserRouter>
+            <Router/>
+          </BrowserRouter>
         </ProfileProvider>
       </ThemeProvider>
     )

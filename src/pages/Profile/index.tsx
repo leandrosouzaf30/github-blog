@@ -13,7 +13,6 @@ export function Profile(){
     const {user} = useContext(ProfileContext)
     return(
         <div>
-            <Header/>
             <ProfileContainer>
                 <ProfileContent>
                     <img src={user.avatar_url} alt="" />
@@ -45,7 +44,7 @@ export function Profile(){
                         </ProfileInfo>
                     </ProfileDescription>
                 </ProfileContent>
-                <BuscaPublicacoes/>
+                {/* <BuscaPublicacoes/> */}
                 <Publicacoes />
             </ProfileContainer>
 

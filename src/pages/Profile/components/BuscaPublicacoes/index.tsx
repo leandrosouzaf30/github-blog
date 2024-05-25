@@ -2,8 +2,8 @@ import { SearchFormContainer } from "./styles";
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from "react";
-import { api } from "../../../../lib/axios";
+import { useContext, useState } from "react";
+import { ProfileContext } from "../../../../context/ProfileContext";
 
 // Mapeia o tipo de dado a ser retornado
 const searchFormSchema = z.object({
@@ -15,7 +15,7 @@ const searchFormSchema = z.object({
 
 
 export function BuscaPublicacoes(){
-    const [searchIssue, SetsearcheIssue] = useState([])
+    const {getIssues} = useContext(ProfileContext)
 
        
     const {
@@ -27,22 +27,12 @@ export function BuscaPublicacoes(){
     });
 
     async function handleSearchTransactions(data: SearchFormInputs){
-        const owner = "leandrosouzaf30"
-        const repo = "github-blog"
-        const fullQuery = `${data.query} repo:${owner}/${repo}`;
-  
-        const response = await api.get('search/issues', {
-            params: {
-              q: fullQuery
-            }
-          })
-      
-          SetsearcheIssue(response.data)
+      getIssues(data.query)
     }
 
     return(
         <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
-            <input type="text" placeholder="Busque por transações" {...register('query')}/>
+            <input type="text" placeholder="Busque por conteúdo" {...register('query')}/>
         </SearchFormContainer>          
     )
 }

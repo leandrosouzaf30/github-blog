@@ -9,6 +9,12 @@ export const PublicacoesContainer = styled.ul`
     
 `
 
+export const PublicacoesHeader = styled.header`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+`
+
 export const PublicacoesList = styled.li`
     display: flex;
     border-radius: 0.5rem;
@@ -19,7 +25,7 @@ export const PublicacoesList = styled.li`
     background: ${props=>props.theme['base-profile']};
 `
 
-export const PublicacoesCard = styled.div`
+export const Link = styled.a`
     display: flex;
     padding: 1rem;
 `

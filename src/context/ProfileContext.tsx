@@ -16,11 +16,23 @@ interface User {
     followers: number
 }
 
+
+interface Items{
+    id: number,
+    title: string,
+    body: string
+}
+
+interface Issues {
+    total_count: number,
+    items: Items[]
+}
+
 interface ProfileContextType {
     user: User;
-    issues: []
+    issues: Issues;
     getUser: () => Promise<void>;
-    getIssues: () => Promise<void>;
+    getIssues: (query?:string) => Promise<void>;
 
   }
 
@@ -36,7 +48,14 @@ export function ProfileProvider({children}: ProfileProviderProps) {
         company: '', 
         followers: 0
     })
-    const [issues, setIssues] = useState([])
+    const [issues, setIssues] = useState<Issues>({
+        total_count: 0,
+        items:[{
+            id: 0,
+            title: '',
+            body: ''
+        }]
+    })
 
     async function getUser() {
         const userGit = 'leandrosouzaf30'
@@ -46,8 +65,18 @@ export function ProfileProvider({children}: ProfileProviderProps) {
     }
 
 
-    async function getIssues(){
-        const response = await api.get('https://api.github.com/repos/leandrosouzaf30/github-blog/issues')
+    async function getIssues(query?: string){
+        const q = query ? query : ''
+        // const response = await api.get('https://api.github.com/repos/leandrosouzaf30/github-blog/issues')
+        const owner = "leandrosouzaf30"
+        const repo = "github-blog"
+        const fullQuery = `${q} repo:${owner}/${repo}`;
+  
+        const response = await api.get('search/issues', {
+            params: {
+              q: fullQuery
+            }
+          })
         setIssues(response.data)
     }
 
@@ -61,7 +90,7 @@ export function ProfileProvider({children}: ProfileProviderProps) {
             user,
             issues,
             getUser,
-            getIssues,
+            getIssues
         }}>
             {children}
         </ProfileContext.Provider>
