@@ -19,6 +19,7 @@ interface User {
 
 interface Items{
     id: number,
+    number: number,
     title: string,
     body: string
 }
@@ -52,6 +53,7 @@ export function ProfileProvider({children}: ProfileProviderProps) {
         total_count: 0,
         items:[{
             id: 0,
+            number: 0,
             title: '',
             body: ''
         }]

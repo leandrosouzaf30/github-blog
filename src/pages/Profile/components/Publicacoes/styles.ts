@@ -21,14 +21,21 @@ export const PublicacoesList = styled.li`
     @media(min-width: 70rem) {
         width: 48%;
     }
+
+    a{
+        display: flex;
+        padding: 1rem;
+        text-decoration:none;
+        color: inherit;
+
+        &:hover {
+            border: 1px solid ${props => props.theme["base-border"]};
+        }
+    }
   
     background: ${props=>props.theme['base-profile']};
 `
 
-export const Link = styled.a`
-    display: flex;
-    padding: 1rem;
-`
 export const CardContent = styled.div`
     display: flex;
     flex: 1 1 auto;

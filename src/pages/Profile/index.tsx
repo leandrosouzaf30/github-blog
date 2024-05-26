@@ -1,9 +1,7 @@
 
 import { ProfileContainer, ProfileContent, ProfileDescription, ProfileInfo } from "./styles";
-import { Header } from "../../components/Header";
 import { GithubLogo, Users, Buildings, ArrowSquareOut } from "phosphor-react";
 import { Publicacoes } from "./components/Publicacoes";
-import { BuscaPublicacoes } from "./components/BuscaPublicacoes";
 import { useContext } from "react";
 import { ProfileContext } from "../../context/ProfileContext";
 
@@ -44,7 +42,6 @@ export function Profile(){
                         </ProfileInfo>
                     </ProfileDescription>
                 </ProfileContent>
-                {/* <BuscaPublicacoes/> */}
                 <Publicacoes />
             </ProfileContainer>
 
